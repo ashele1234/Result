@@ -4,7 +4,7 @@ import { NextRequest ,NextResponse} from "next/server";
 import Topic from "@/app/models/TopicModel";
 import DbConfig from "@/app/DbConfig";
 
- export const POST= async(req:NextRequest,res:NextResponse)=>{
+ export const POST= async(req:NextRequest)=>{
  try {
     DbConfig()
     const { title, description } = await req.json();
@@ -14,7 +14,7 @@ import DbConfig from "@/app/DbConfig";
     throw new Error("Error creating topic");
  }
 }
-export const GET= async(res:NextResponse)=>{
+export const GET= async()=>{
     try {
        DbConfig()
        const topic = await Topic.find();
