@@ -19,8 +19,8 @@ const FormAction = async (formdata: FormData) => {
     } else {
       return "Unable to create topic";
     }
-  } catch (error: any) {
-    console.log(error);
+  } catch (error) {
+    console.error(error);
   }
 };
 
