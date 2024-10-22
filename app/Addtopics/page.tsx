@@ -7,7 +7,6 @@ const FormAction = async (formdata: FormData) => {
   const description = formdata.get("description");
 
   try {
-    const router= useRouter()
     const res = await fetch("http://localhost:3000/Api/topics", {
       method: "POST",
       headers: { "Content-type": "application/json" },
@@ -15,7 +14,7 @@ const FormAction = async (formdata: FormData) => {
     });
     
     if (res.status === 201) {
-      router.refresh()
+      // router.refresh()
       return "Topic created successfully";
     } else {
       return "Unable to create topic";

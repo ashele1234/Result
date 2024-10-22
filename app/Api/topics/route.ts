@@ -11,7 +11,7 @@ import DbConfig from "@/app/DbConfig";
     const topic = await Topic.create({ title, description });
     return NextResponse.json({message:"Topic created", status: 201, data:topic});
  } catch (error) {
-    throw new Error("Error creating topic");
+    console.error(error);
  }
 }
 export const GET= async()=>{
@@ -20,7 +20,7 @@ export const GET= async()=>{
        const topic = await Topic.find();
        return NextResponse.json({message:"Topic gotten", status: 201,data:topic});
     } catch (error) {
-       throw new Error("Error getting topics");
+       console.error(error);
     }
    }
 
@@ -31,6 +31,7 @@ export const GET= async()=>{
       await Topic.findByIdAndDelete(id);
        return NextResponse.json({message:"Topic deleted", status: 201});
     } catch (error) {
-       throw new Error("Error deleting topic");
+      console.error(error);
+
     }
    }

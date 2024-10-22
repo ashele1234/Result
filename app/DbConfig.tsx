@@ -1,5 +1,5 @@
 import { connect } from 'mongoose'
-import React from 'react'
+// import React from 'react'
 
 const url ="mongodb://localhost:27017/crudDB"
 const DbConfig = async() => {
