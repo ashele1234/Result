@@ -25,7 +25,7 @@ const Navs=[
      name:"FAQ"
   }
 ]
-const page = () => {
+const Page = () => {
   const[Toggle,setToggle]=useState<boolean>(false)
   const OnToggle=()=>{
     setToggle(!Toggle)
@@ -58,7 +58,7 @@ const page = () => {
 
       </header>
     </header>
-   {Toggle && <div className=" gap-4 w-full h-[100vh] bg-black absolute top-0 z-10 mt-[80px] transition-all duration-300 flex justify-start items-start flex-col px-6 cursor-pointer">
+   {Toggle && <div className=" gap-4 w-full h-[100vh] bg-black absolute top-0 z-10 mt-[80px] transition-all duration-300 flex justify-start items-start flex-col px-6 cursor-pointer md:hidden lg:hidden">
     {
       Navs.map((el:any)=>(
         <div className='text-white font-semibold mt-8 font-serif' key={el.id}>
@@ -85,4 +85,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
