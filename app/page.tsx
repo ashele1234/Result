@@ -25,18 +25,18 @@ const Navs=[
      name:"FAQ"
   }
 ]
-const page = () => {
-  const[toggle,seTtoggle]=useState<boolean>(false)
+const Page = () => {
+  const[Toggle,setToggle]=useState<boolean>(false)
   const OnToggle=()=>{
-    seTtoggle(!toggle)
+    setToggle(!Toggle)
   }
   const OnCancel=()=>{
-    seTtoggle(false)
+    setToggle(false)
   }
   return (
    <div className=' flex justify-center items-center flex-col'>
-    <header className='w-[100%] h-[80px] bg-white flex justify-center items-center fixed top-0 z-10 lg:flex max-lg:flex '>
-      <header className='w-[90%] h-[80px] bg-white flex justify-between items-center fixed top-0 z-10'>
+    <header className='w-[100%] h-[80px] bg-white flex justify-center items-center fixed top-0 z-30 lg:flex max-lg:flex '>
+      <header className='w-[90%] h-[80px] bg-white flex justify-between items-center fixed top-0 z-30'>
         <div className="font-extrabold text-2xl font-serif">ResumeGrove</div>
         <div className='flex justify-center items-center gap-10 max-md:hidden'>
         {
@@ -53,12 +53,12 @@ const page = () => {
           <button className='px-6 py- rounded-md font-semibold bg-[#502ACD] text-white hover:bg-black font-serif'>Register</button>
         </div>
         <div className='text-black  sm:block max-sm:flex -mr-4 lg:hidden md:flex flex justify-center items-center'>
-           {!toggle? <MdMenu className='text-black w-[35px] h-[35px] cursor-pointer' onClick={OnToggle}/>:<MdCancel  className='text-black w-[35px] h-[35px] cursor-pointer'onClick={OnCancel}/>}
+           {!Toggle? <MdMenu className='text-black w-[35px] h-[35px] cursor-pointer' onClick={OnToggle}/>:<MdCancel  className='text-black w-[35px] h-[35px] cursor-pointer'onClick={OnCancel}/>}
           </div>
 
       </header>
     </header>
-   {toggle && <div className=" gap-4 w-full h-[100vh] bg-black absolute top-0 z-10 mt-[80px] transition-all duration-300 flex justify-start items-start flex-col px-6 cursor-pointer">
+   {Toggle && <div className=" gap-4 w-full h-[100vh] bg-black absolute top-0 z-10 mt-[80px] transition-all duration-300 flex justify-start items-start flex-col px-6 cursor-pointer md:hidden lg:hidden">
     {
       Navs.map((el:any)=>(
         <div className='text-white font-semibold mt-8 font-serif' key={el.id}>
@@ -85,4 +85,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
