@@ -1,41 +1,87 @@
-import React from 'react'
-import { AiOutlineEye, AiOutlineMessage } from 'react-icons/ai'
-import { MdBolt, MdMemory } from 'react-icons/md'
-// import TopicsList from './TopicsList'
+"use client"
+import React, { useState } from 'react'
+import { MdCancel, MdMenu } from 'react-icons/md'
 
+
+const Navs=[
+  {
+    id:1,
+     name:"Home"
+  },
+  {
+    id:1,
+     name:"About"
+  },
+  {
+    id:1,
+     name:"Services"
+  },
+  {
+    id:1,
+     name:"News"
+  },
+  {
+    id:1,
+     name:"FAQ"
+  }
+]
 const page = () => {
+  const[toggle,seTtoggle]=useState<boolean>(false)
+  const OnToggle=()=>{
+    seTtoggle(!toggle)
+  }
+  const OnCancel=()=>{
+    seTtoggle(false)
+  }
   return (
-    <div className='w-[700px] h-[60vh] rounded-3xl shadow-slate-900 flex justify-between items-center gap-6 sm:flex-col -mt-[200px] max-h-full p-4 max-sm:flex-col max-md:flex-row max-lg:flex md:flex-row'>
-    <div className='w-[350px] h-full flex flex-col justify-center items-center bg-[#5D3EFB] rounded-3xl gap-6 p-4'>
-      <p className='font-bold text-white text-2xl'>Your Result</p>
-      <div className='w-[150px] h-[150px] rounded-full flex justify-center items-center flex-col gap-2  bg-[#271583a5]'>
-        <h1 className='font-bold text-white text-5xl'>76</h1>
-        <p className='font-normal text-white '>of 100</p>
-      </div>
-      <h2 className='font-bold text-white text-2xl'>Great</h2>
-      <p className='text-white font-normal text-center flex justify-center items-center'>You scored higher than 65% of <br /> the people who have taken these tests.</p>
+   <div className=' flex justify-center items-center flex-col'>
+    <header className='w-[100%] h-[80px] bg-white flex justify-center items-center fixed top-0 z-10 lg:flex max-lg:flex '>
+      <header className='w-[90%] h-[80px] bg-white flex justify-between items-center fixed top-0 z-10'>
+        <div className="font-extrabold text-2xl font-serif">ResumeGrove</div>
+        <div className='flex justify-center items-center gap-10 max-md:hidden'>
+        {
+          Navs.map((el:any)=>(
+            <div className=' font-semibold text-base cursor-pointer hover:underline decoration-4 underline-offset-8 font-serif lg:flex md:hidden max-sm:hidden'
+             key={el.id}>
+              <div>{el.name}</div>
+             </div>
+          ))
+        }
+        </div>
+        <div className='flex gap-4 max-md:hidden max-sm:hidden'>
+          <button className='px-6 py-4 bg-slate-900 rounded-md border font-semibold hover:bg-[#502ACD] text-[#fff] font-serif'>Sign in</button>
+          <button className='px-6 py- rounded-md font-semibold bg-[#502ACD] text-white hover:bg-black font-serif'>Register</button>
+        </div>
+        <div className='text-black  sm:block max-sm:flex -mr-4 lg:hidden md:flex flex justify-center items-center'>
+           {!toggle? <MdMenu className='text-black w-[35px] h-[35px] cursor-pointer' onClick={OnToggle}/>:<MdCancel  className='text-black w-[35px] h-[35px] cursor-pointer'onClick={OnCancel}/>}
+          </div>
+
+      </header>
+    </header>
+   {toggle && <div className=" gap-4 w-full h-[100vh] bg-black absolute top-0 z-10 mt-[80px] transition-all duration-300 flex justify-start items-start flex-col px-6 cursor-pointer">
+    {
+      Navs.map((el:any)=>(
+        <div className='text-white font-semibold mt-8 font-serif' key={el.id}>
+          {el.name}
+        </div>
+      ))
+    }
+    <div className='flex gap-4 flex-col'>
+          <button className='px-48 py-4 bg-slate-900 rounded-md border font-semibold hover:bg-[#502ACD] text-[#fff] font-serif max-sm:px-44 max-md:px-72'>Sign in</button>
+          <button className='px-48 py-4 rounded-md font-semibold bg-[#502ACD] text-white hover:bg-slate-600 font-serif max-sm:px-44 max-md:px-72'>Register</button>
+        </div>
+    </div>}
+    <section className=' sec-1 w-full h-[100vh] bg-slate-800 flex justify-center items-center flex-col gap-2'>
+    <div className=' transition-all duration-300 absolute w-full h-[100vh] top-0 flex flex-col bg-[rgba(0,0,0,0.57)] justify-center items-center max-sm:gap-4'>
+    <h1 className='font-bold text-7xl text-white font-serif text-center max-sm:text-4xl mt-6'>Craft a resume that gets <br /> you hired.</h1>
+    <p className='font-bold text-2xl text-white font-serif text-center max-sm:text-sm max-w-[700px]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus cumque assumenda,labore cum molestias sint!</p>
+    <div className='flex justify-center items-center gap-2 mt-6'>
+      <button className='px-10 py-3 bg-white font-serif rounded-md drop-shadow-2xl max-sm:px-6'>CREATE CV</button>
+      <button className='px-10 py-3 bg-[#502ACD] text-white font-serif rounded-md drop-shadow-2xl max-sm:px-6'>LEARN MORE</button>
     </div>
-    <div className='w-[350px] h-full flex flex-col justify-center items-start bg-white gap-5'>
-      <h1 className='font-bold flex justify-start items-start'>Summary</h1>
-      <div className='w-[300px] h-[40px]  rounded-sm flex justify-between items center p-2 bg-[#FFF6F5]'>
-        <div className="flex gap-2 justify-center items-center text-red-500 font-bold"><MdBolt/>Reaction</div>
-        <p className="font-bold">80/100</p>
-      </div>
-      <div className='w-[300px] h-[40px]  rounded-sm flex justify-between items center p-2 bg-[#FFFBF2]'>
-        <div className="flex gap-2 justify-center items-center text-yellow-500 font-bold"><MdMemory/>Memory</div>
-        <p className="font-bold">80/100</p>
-      </div>
-      <div className='w-[300px] h-[40px]  rounded-sm flex justify-between items center p-2 bg-[#F2FBFA]'>
-        <div className="flex gap-2 justify-center items-center text-green-500 font-bold"><AiOutlineMessage/>Verbal</div>
-        <p className="font-bold">80/100</p>
-      </div>
-      <div className='w-[300px] h-[40px]  rounded-sm flex justify-between items center p-2 bg-[#F3F3FD]'>
-        <div className="flex gap-2 justify-center items-center text-indigo-500 font-bold"><AiOutlineEye/>Visual</div>
-        <p className="font-bold">80/100</p>
-      </div>
-      <button className='w-[300px] h-[40px] bg-[#5D3EFB] rounded-full font-bold text-white'>Continue</button>
     </div>
-    </div>
+    </section>
+   </div>
   )
 }
 

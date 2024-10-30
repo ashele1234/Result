@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import DbConfig from "./DbConfig";
-// import NavBar from "./page";
-// import Navs from "./Navs";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,15 +24,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    await DbConfig();
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >  
-      <div className="w-full h-[100vh] flex justify-center items-center">
-      {children}
-      </div>
+     {children}
       </body>
     </html>
   );
